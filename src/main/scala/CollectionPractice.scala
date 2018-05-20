@@ -52,5 +52,16 @@ object CollectionPractice {
     println(List(List(1, 2, 3), List(4, 5)).flatten)
 
     println(List(List(1, 2, 3), List(4, 5)).flatMap(i => i.map(_ * 2)))
+
+    def ourMap(numbers: List[Int], fn: Int => Int): List[Int] = {
+      numbers.foldRight(List[Int]()) { (x: Int, xs: List[Int]) => fn(x) :: xs }
+    }
+
+    println(ourMap(numberList, timeTwo))
+
+    val extensions = Map("steve" -> 10, "bob" -> 100)
+
+    println(extensions.filter(namePersion => namePersion._2 > 10))
+    println(extensions.filter({ case (name, phone) => phone > 10 }))
   }
 }
