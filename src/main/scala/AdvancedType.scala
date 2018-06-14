@@ -13,5 +13,9 @@ object AdvancedType {
     println(new Container[String].addIt("123"))
 
     println(new Container[Int].addIt(123))
+
+    class LimitContainer[A](value: A) {
+      def addIt(implicit evidence: A =:= Int) = value + 123
+    }
   }
 }
